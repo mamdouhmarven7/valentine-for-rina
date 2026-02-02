@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal for Rina</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 20px #ff6b9d, 0 0 40px #ff6b9d;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+        .photo-section {
+            margin: 30px 0;
+        }
+        .photo-section img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ff6b9d;
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .photo-section img:hover {
+            transform: scale(1.1);
+        }
+        .text-section {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+        }
+        #yesBtn:hover {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, #ff6b9d, transparent);
+            border-radius: 50%;
+            animation: float 6s linear infinite;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #ff6b9d, 0 0 40px #ff6b9d; }
+            to { text-shadow: 0 0 30px #00d4ff, 0 0 60px #00d4ff; }
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .message {
+            display: none;
+            font-size: 2rem;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1>Will You Be My Valentine, Rina?</h1>
+        <p>In this vast universe, you're my brightest star. Let's create our own galaxy of love.</p>
+        
+        <!-- Placeholder for Photos -->
+        <div class="photo-section">
+            <img src="photo1.jpg" alt="Add your photo here">
+            <img src="photo2.jpg" alt="Add your photo here">
+        </div>
+        
+        <!-- Placeholder for Additional Text -->
+        <div class="text-section">
+            <p>"From the moment I met you, my world changed. Your laughter is my favorite melody, and your eyes are the stars I wish upon every night."</p>
+        </div>
+        
+        <div class="buttons">
+            <button id="yesBtn">Yes, Forever!</button>
+            <button id="noBtn">Maybe Later</button>
+        </div>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Create floating particles for futuristic effect
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Button interactions
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+
+        yesBtn.addEventListener('click', () => {
+            message.textContent = "Yay! You're my cosmic love! 💖🚀";
+            message.style.display = 'block';
+            message.style.color = '#00d4ff';
+            // Add confetti effect (simple simulation)
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '5px';
+                confetti.style.height = '5px';
+                confetti.style.background = Math.random() > 0.5 ? '#ff6b9d' : '#00d4ff';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.animation = 'float 3s linear';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        });
+
+        noBtn.addEventListener('click', () => {
+            message.textContent = "No worries, my love. The stars will wait for us! 🌟";
+            message.style.display = 'block';
+            message.style.color = '#ff6b9d';
+        });
+    </script>
+</body>
+</html>
